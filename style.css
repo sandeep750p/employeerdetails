@@ -1,0 +1,66 @@
+body{
+    background-color: black;
+    color: whitesmoke;
+    font-family: helvetica;
+    margin: 50px;
+}
+.flexbox{
+    display: flex;
+    
+}
+input{
+    width:400px;
+    height: 30px;
+    background-color: black;
+    border: 2px solid white;
+    color: white;
+
+}
+
+
+.name{
+    width:400px;
+    
+}
+.prof{
+    width: 400px;
+    margin-left: 40px;
+    
+}
+.age{
+    width: 400px;
+    margin-left: 40px;
+}
+.button{
+    margin-top: 30px;
+    width: 226px;
+    height: 58px;
+}
+#errmsg{
+    color: red;
+}
+
+#success{
+    color: rgb(2, 255, 2);
+}
+li{
+    text-decoration: none;
+}
+span{
+    margin-left: 20px;
+}
+.left{
+    margin-left: 0px;
+}
+.delete{
+    width: 162px;
+    height: 42px;
+    background-color: white;
+    border-radius: 20px;
+   
+}
+.border{
+    margin-top: 50px;
+    margin-left: 0px;
+}
+

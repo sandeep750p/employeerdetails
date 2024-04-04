@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div><h2>New Employees</h2></div>
+
+    <div class="flexbox">
+    <div class="name">
+   <p>Enter Name</p>  
+    <input type="text" placeholder="" id="Fname">
+</div>
+
+<div class="prof">
+    <p>Enter Profession</p>  
+     <input type="text" placeholder="" id="profession">
+ </div>
+
+ <div class="age">
+    <p>Enter Age</p>  
+     <input type="number" placeholder="" id="age">
+ </div>
+
+
+</div>
+
+
+<button class="button" onclick="submit()">Add User</button>
+
+    <h3 id="errmsg"></h3>
+    <h3 id="success"></h3>
+
+   <p>Added Employees</p>
+
+   <p id="count" style="color: grey;"></p>
+
+   <div id="employeeList"></div>
+
+   <script>
+    const array = [];
+    var nextid = 1
+    var count = document.getElementById("count").innerHTML="You have 0 Employees."
+
+    function displayEmployees() {
+    const employeeList = document.getElementById('employeeList');
+    employeeList.innerHTML = ''; 
+
+    const htmlStrings = array.map(employee => {
+
+        return `<span class='border'>
+            
+            <span class="left"> ${employee.id} <span/>
+             <span> Name: ${employee.Fname} <span/>
+             <span>Profession: ${employee.profession}<span/> 
+                <span> Age: ${employee.age}<span/>
+                    
+                    <span/>
+                   
+
+                    <button class="delete" onclick="deleteUser(${employee.id})">Delete User</button>
+                     <br/>` ;
+
+
+    });
+
+    employeeList.innerHTML = htmlStrings.join('');
+}
+
+
+    function submit() {
+        
+        let fname = document.getElementById('Fname').value;
+        let prof = document.getElementById('profession').value;
+        let age = document.getElementById('age').value;
+
+        if (fname === "" || prof === "" || age === "") {
+            document.getElementById('errmsg').innerHTML = "Error : Please Make sure All the fields are filled before adding in an employee !";
+            console.log("submit working");
+        } else {
+            document.getElementById("count").innerHTML=""
+            document.getElementById('errmsg').innerHTML = "";
+            document.getElementById('success').innerHTML = "Success : Employee Added!";
+
+            var dataObject = {
+                id :nextid++,
+                Fname: fname,
+                profession: prof,
+                age: age,
+                
+            };
+            array.push(dataObject);
+            console.log(array);
+            displayEmployees();
+        }
+    }
+    function deleteUser(id) {
+            const index = array.findIndex(employee => employee.id === id);
+            if (index !== -1) {
+                array.splice(index, 1);
+                displayEmployees();
+            }
+        }
+   </script>
+</body>
+</html>
